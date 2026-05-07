@@ -10,13 +10,15 @@ while True:
     if command == "X":
         break
 
-    action, feet = command.split()
-    feet = int(feet)
+    parts = command.split()
+
+    action = parts[0]
+    feet = int(parts[1])
 
     if action == "A":
-        plane.ascend(feet)
+        plane.increase_altitude(feet)
 
     elif action == "D":
-        plane.descend(feet)
+        plane.decrease_altitude(feet)
 
-print(f"Final altitude: {plane.get_altitude()} feet")
+print(f"Final altitude: {plane.altitude} feet")
