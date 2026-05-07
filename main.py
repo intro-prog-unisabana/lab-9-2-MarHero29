@@ -1,37 +1,49 @@
-def main():
-    people = []  # List to store all Person objects
+from person import Person
+from bank_account import BankAccount
+from utils import person_data, balance_summary
 
-    while True:
-        # Display menu
-        print("Choose an option:")
-        print("1. Add a new person")
-        print("2. Add an account to a person")
-        print("3. Show all balances")
-        print("4. Quit")
+people = []
 
-        choice = input().strip()
+while True:
+    print("Choose an option:")
+    print("1. Add a new person")
+    print("2. Add an account to a person")
+    print("3. Show all balances")
+    print("4. Quit")
 
-        # Option 1: Add a new person
-        if choice == "1":
-            pass
+    choice = input()
 
-        # Option 2: Add an account to an existing person
-        elif choice == "2":
-            pass
+    if choice == "1":
+        person = person_data()
+        people.append(person)
 
-        # Option 3: Show all balances
-        elif choice == "3":
-            pass
+    elif choice == "2":
+        name = input("Enter the person's name:\n")
 
-        # Option 4: Quit
-        elif choice == "4":
-            print("Goodbye!")
-            break
+        found = False
 
-        # Invalid input
+        for person in people:
+            if person.name == name:
+                account_number = int(input("Enter a 4-digit account number:\n"))
+                balance = float(input("Enter the initial balance:\n"))
+
+                account = BankAccount(account_number, balance)
+
+                person.add_account(account)
+
+                found = True
+                break
+
+        if not found:
+            print("Person not found.")
+
+    elif choice == "3":
+        if len(people) == 0:
+            print("No data to show.")
         else:
-            print("Invalid option. Please choose 1-4.")
+            balance_summary(people)
 
-if __name__ == "__main__":
-    main()
+    elif choice == "4":
+        print("Goodbye!")
+        break
 
