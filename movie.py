@@ -10,14 +10,11 @@ class Movie:
         return f"Movie: {self.title} (Directed by {self.director}, {self.year})"
 
 
-title = input()
-director = input()
-year = input()
+if __name__ == "__main__":
+    title = input()
+    director = input()
+    year = input()
 
-movie = Movie(title, director, year)
+    movie = Movie(title, director, year)
 
-print(movie)
-    
-    
-    # TODO: Construct a Movie object!
-    # TODO: Print the object!
+    print(movie)

@@ -16,9 +16,9 @@ while True:
     feet = int(parts[1])
 
     if action == "A":
-        aircraft.ascend(feet)
+        aircraft.increase_altitude(feet)
 
     elif action == "D":
-        aircraft.descend(feet)
+        aircraft.decrease_altitude(feet)
 
 print(f"Final altitude: {aircraft.altitude} feet")
